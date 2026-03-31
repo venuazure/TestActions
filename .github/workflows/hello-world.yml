@@ -1,15 +1,21 @@
 name: Hello World Workflow
 
-# Trigger workflow on every push
-on: 
-  push:
+# Trigger workflow manually from the Actions tab
+on:
+  workflow_dispatch:
 
 jobs:
   hello_job:
-    runs-on: ubuntu-latest   # Runner environment
+    runs-on: ubuntu-latest   # Use GitHub-hosted Ubuntu runner
     steps:
+      # Step 1: Checkout your repository code
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      # Step 2: Print Hello World
       - name: Print Hello World
         run: echo "Hello, World from GitHub Actions!"
+
+      # Step 3: Show README file contents (optional demo)
+      - name: Show README
+        run: cat README.md
